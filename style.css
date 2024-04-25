@@ -1,0 +1,61 @@
+/* Additional custom styles */
+/* Image Slider styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://img.freepik.com/free-photo/vegetables-set-left-black-slate_1220-685.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1714003200&semt=ais');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#image-slider {
+    border: 2px solid #f2f2f2;
+}
+
+.carousel-item img {
+    border-radius: 15px;
+}
+
+#login-section {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#search-form {
+    margin-top: 20px;
+}
+
+#search-input {
+    width: 70%;
+}
+
+#login-btn {
+    margin-left: 10px;
+}
+
+/* Recipes and Favourites Sections */
+.recipe, #favourites {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.recipe {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.recipe img {
+    width: 100%;
+    height: auto;
+}
+
+/* About Section */
+#about {
+    margin-top: 20px;
+}
