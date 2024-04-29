@@ -7,28 +7,39 @@ document.addEventListener('DOMContentLoaded', () => {
         loginSection.classList.toggle('d-none');
     });
 });
-
-// Using Express.js for server-side logic
-const express = require('express');
-const axios = require('axios');
-
-const app = express();
-const PORT = 3000;
-
-const API_ID = 'YOUR_EDAMAM_API_ID';
-const API_KEY = 'YOUR_EDAMAM_API_KEY';
-
-app.get('/recipes', async (req, res) => {
-    const query = req.query.q;
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
     
-    try {
-        const response = await axios.get(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching recipes' });
-    }
+    searchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const query = searchInput.value;
+        const recipes = await fetchRecipes(query);
+        
+        displayRecipes(recipes);
+    });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+async function fetchRecipes(query) {
+    const response = await fetch(`/recipes?q=${query}`);
+    const data = await response.json();
+    return data.hits;
+}
+
+function displayRecipes(recipes) {
+    const recipesSection = document.getElementById('recipes');
+    
+    let recipeHTML = '';
+    recipes.forEach(recipe => {
+        recipeHTML += `
+            <div class="recipe">
+                <h2>${recipe.recipe.label}</h2>
+                <img src="${recipe.recipe.image}" alt="${recipe.recipe.label}">
+                <a href="${recipe.recipe.url}" target="_blank">View Recipe</a>
+            </div>
+        `;
+    });
+    
+    recipesSection.innerHTML = recipeHTML;
+}
