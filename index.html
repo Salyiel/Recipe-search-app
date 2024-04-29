@@ -10,119 +10,104 @@
 </head>
 <body class="bg-light">
 
-    <div class="container-fluid">
-        <!-- Top Section: Login Button -->
-        <div class="row justify-content-end">
-            <div class="col-12 col-md-auto mt-3">
-                <button id="login-btn" class="btn btn-outline-primary float-right">Login/Create Profile</button>
-            </div>
+    <!-- Menu Section -->
+    <nav id="menu" class="bg-dark text-white py-2">
+        <div class="container">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#favorites">Favorites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#about">About</a>
+                </li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Header Section: Search Form -->
-        <div class="row justify-content-between align-items-center py-3">
-            <div class="col-12 col-md-auto">
-                <form id="search-form" class="form-inline">
-                    <input type="text" id="search-input" class="form-control mr-2" placeholder="Search recipes...">
-                    <button type="submit" class="btn btn-primary">Search</button>
+    <!-- Search Form -->
+    <header class="container-fluid bg-light py-3">
+        <div class="container">
+            <form id="search-form" class="form-inline mb-3">
+                <input type="text" id="search-input" class="form-control mr-2" placeholder="Search recipes...">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <!-- Login/Create Profile Button -->
+            <button id="login-btn" class="btn btn-outline-primary">Login/Create Profile</button>
+        </div>
+    </header>
+
+    <!-- Image Slider -->
+    <div class="container mb-4">
+        <div id="image-slider" class="carousel slide" data-ride="carousel" data-interval="5000">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#image-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#image-slider" data-slide-to="1"></li>
+                <li data-target="#image-slider" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner rounded">
+                <div class="carousel-item active">
+                    <img src="images/pexels-ash-122861-376464.jpg" alt="Fluffy-pancakes" class="d-block w-100 rounded">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/pexels-ella-olsson-572949-1640777.jpg" alt="Vegan-salad" class="d-block w-100 rounded">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/pexels-robinstickel-70497.jpg" alt="Burger-n-fries" class="d-block w-100 rounded">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#image-slider" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#image-slider" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Login/Create Profile Form -->
+    <section id="login-section" class="container mt-4 d-none">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Login/Create Profile</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="col-12 col-md-auto">
-                <!-- Menu Section -->
-                <nav id="menu" class="bg-dark text-white py-2">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#favorites">Favorites</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#about">About</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
+    </section>
 
-        <!-- Image Slider -->
-        <div class="row">
-            <div class="col">
-                <div id="image-slider" class="carousel slide" data-ride="carousel" data-interval="5000">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#image-slider" data-slide-to="0" class="active"></li>
-                        <li data-target="#image-slider" data-slide-to="1"></li>
-                        <li data-target="#image-slider" data-slide-to="2"></li>
-                    </ol>
+    <!-- Recipes Section -->
+    <section id="recipes" class="container mt-4">
+        <!-- Display recipes here -->
+    </section>
 
-                    <!-- Slides -->
-                    <div class="carousel-inner rounded">
-                        <div class="carousel-item active">
-                            <img src="images/pexels-ash-122861-376464.jpg" alt="Fluffy-pancakes" class="d-block w-100 rounded">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/pexels-ella-olsson-572949-1640777.jpg" alt="Vegan-salad" class="d-block w-100 rounded">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/pexels-robinstickel-70497.jpg" alt="Burger-n-fries" class="d-block w-100 rounded">
-                        </div>
-                    </div>
+    <!-- Favourites Section -->
+    <section id="favourites" class="container mt-4">
+        <!-- Display favourite recipes here -->
+    </section>
 
-                    <!-- Left and right controls -->
-                    <a class="carousel-control-prev" href="#image-slider" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#image-slider" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Login/Create Profile Form -->
-        <section id="login-section" class="row mt-4 d-none">
-            <div class="col-md-4 offset-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Login/Create Profile</h2>
-                        <form id="login-form">
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter username">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recipes Section -->
-        <section id="recipes" class="row mt-4">
-            <div class="col">
-                <!-- Display recipes here -->
-            </div>
-        </section>
-
-        <!-- Favourites Section -->
-        <section id="favourites" class="row mt-4">
-            <div class="col">
-                <!-- Display favourite recipes here -->
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="row mt-4">
-            <div class="col">
-                <h2>About</h2>
-                <p>This is a single-page web application for searching and displaying recipes using the Edamam Recipe Search API.</p>
-            </div>
-        </section>
-    </div>
+    <!-- About Section -->
+    <section id="about" class="container mt-4">
+        <h2>About</h2>
+        <p>This is a single-page web application for searching and displaying recipes using the Edamam Recipe Search API.</p>
+    </section>
 
     <script src="script.js"></script>
 </body>

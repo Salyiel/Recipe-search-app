@@ -2,7 +2,7 @@ Recipe Search App
 
 A single-page web application for searching and displaying recipes using the Edamam Recipe Search API.
 
-## Men
+## Menu
 The menu section provides navigation options for users to easily navigate through different parts of the application:
 
 - **Home**: Navigate to the home section where users can search for recipes.
@@ -23,10 +23,10 @@ Favorites: Add recipes to favorites for quick access.
 
 ##Technologies Used
 
-Frontend: HTML, CSS, JavaScript
-Backend: 
+Frontend: HTML, CSS, JavaScript, Bootstrap
+Backend: Node js and Express
 API: Edamam Recipe Search API
-Bootstrap
+
 
 SETUP
 
