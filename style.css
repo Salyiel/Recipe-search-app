@@ -150,3 +150,30 @@ body {
 #about {
     margin-top: 20px;
 }
+
+
+/* Footer section  */
+
+.social-media i{
+    padding: 0;
+    background-color: none;
+    display: inline-block;
+    text-align: center;
+    justify-content: space-between;
+    margin: 0;
+    transition: transform 0.5s;
+}
+
+.social-media i:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+
+.copyright{
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 0 25px;
+    background: #262626;
+    font-weight: 300;
+}
