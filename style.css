@@ -1,12 +1,42 @@
 /* Additional custom styles */
-/* Image Slider styling */
+
 body {
     font-family: 'Arial', sans-serif;
     background-image: url('https://watermark.lovepik.com/photo/40021/9739.jpg_wh1200.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
+/* Menu section styling  */
+#menu ul li{
+   list-style: none;
+    display: flex;
+    margin: 0 20px;
+    position: relative;
+}
 
+#menu ul li a{
+    text-decoration: none;
+    text-transform: capitalize;
+
+}
+/* adding the hover effect */
+#menu ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: red;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    transition: 0.5s;
+}
+
+#menu ul li:hover::after{
+    width: 100%;
+}
+
+
+/* Image Slider styling */
 #image-slider {
     border: 2px solid #f2f2f2;
 }
@@ -25,7 +55,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
+/* search section */
 #search-form {
     margin-top: 20px;
 }
@@ -36,6 +66,12 @@ body {
 
 #login-btn {
     margin-left: 10px;
+    width: 200px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid lightblue;
+    background: transparent;
+    cursor: pointer;
 }
 
 /* Recipes and Favourites Sections */
