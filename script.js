@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginSection.classList.toggle('d-none');
     });
 });
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
@@ -22,10 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchRecipes(query) {
-    const response = await fetch(`/recipes?q=${query}`);
-    const data = await response.json();
-    return data.hits;
+    try {
+        const response = await fetch(`/recipes?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch recipes');
+        }
+        const data = await response.json();
+        return data.hits;
+    } catch (error) {
+        console.error('Error fetching recipes:', error);
+        return [];
+    }
 }
+
 
 function displayRecipes(recipes) {
     const recipesSection = document.getElementById('recipes');
