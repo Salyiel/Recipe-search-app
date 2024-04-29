@@ -28,9 +28,36 @@ Backend: Node js and Express
 API: Edamam Recipe Search API
 
 
-SETUP
+##SETUP
 
 Prerequisites:
 Node.js installed on your machine
 Edamam API ID and API Key
+
+
+
+## Usage
+
+1. **Search Recipes**: Enter ingredients or dish names in the search bar and click the "Search" button.
+2. **View Recipe**: Click on a recipe card to view the full recipe on the Edamam website.
+3. **Favorites**: Add your favorite recipes to the favorites section by clicking on a "Add to Favorites" button (feature to be implemented).
+
+## API Reference
+
+- [Edamam Recipe Search API Documentation](https://developer.edamam.com/edamam-recipe-api)
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Edamam](https://www.edamam.com/) for providing the Recipe Search API
+- Icons made by [Freepik](https://www.freepik.com/) from [www.flaticon.com](https://www.flaticon.com/)
+
+---
 
