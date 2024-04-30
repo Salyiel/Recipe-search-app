@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         loginSection.classList.toggle('d-none');
     });
 });
+
+
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
 const recipesSection = document.querySelector('#recipes');
@@ -61,7 +63,6 @@ function displayRecipes(recipes) {
         addToFavoritesIcon.addEventListener('click', () => {
             // Add functionality to handle adding recipe to favorites
             // For example, you can use local storage to store favorite recipes
-            // Implement your own logic here
         });
 
         cardBody.appendChild(title);
