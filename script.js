@@ -24,9 +24,15 @@ async function searchRecipes() {
 }
 function displayRecipes(recipes) {
     recipesSection.innerHTML = ''; // Clear previous search results
+    const row = document.createElement('div');
+    row.classList.add('row');
+
     recipes.forEach((recipe) => {
         const recipeCard = document.createElement('div');
-        recipeCard.classList.add('card', 'mb-3');
+        recipeCard.classList.add('col-md-4', 'mb-3'); // Adjust the column size as needed
+
+        const card = document.createElement('div');
+        card.classList.add('card');
 
         const cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
@@ -50,11 +56,24 @@ function displayRecipes(recipes) {
         viewRecipeBtn.setAttribute('target', '_blank');
         viewRecipeBtn.textContent = 'View Recipe';
 
+        const addToFavoritesIcon = document.createElement('i');
+        addToFavoritesIcon.classList.add('fas', 'fa-heart', 'favorite-icon');
+        addToFavoritesIcon.addEventListener('click', () => {
+            // Add functionality to handle adding recipe to favorites
+            // For example, you can use local storage to store favorite recipes
+            // Implement your own logic here
+        });
+
         cardBody.appendChild(title);
         cardBody.appendChild(image);
         cardBody.appendChild(ingredients);
         cardBody.appendChild(viewRecipeBtn);
-        recipeCard.appendChild(cardBody);
-        recipesSection.appendChild(recipeCard);
+        cardBody.appendChild(addToFavoritesIcon);
+        card.appendChild(cardBody);
+        recipeCard.appendChild(card);
+        row.appendChild(recipeCard);
     });
+
+    recipesSection.appendChild(row);
 }
+

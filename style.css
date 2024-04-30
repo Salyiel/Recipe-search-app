@@ -11,6 +11,7 @@ body {
     background-image: url('https://watermark.lovepik.com/photo/40021/9739.jpg_wh1200.jpg');
     background-size: cover;
 }
+
 /* Menu section styling  */
 #menu ul li{
    list-style: none;
@@ -49,6 +50,7 @@ body {
 /* Image Slider styling */
 #image-slider {
     border: 2px solid #f2f2f2;
+    margin: 200px;
 }
 
 .carousel-item img {
@@ -64,6 +66,8 @@ body {
 .card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust the width as needed */
+    margin-bottom: 20px;
 }
 
 #login-btn {
@@ -151,10 +155,31 @@ body {
     height: auto;
 }
 
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+}
+
+.list-group-item {
+    padding: 0.25rem 0; /* Adjust padding as needed */
+}
+
+.card-body {
+    padding: 1rem; /* Adjust padding as needed */
+}
+
+.btn-view-recipe {
+    margin-top: 10px;
+}
+
+
 /* About Section */
 #about {
     margin-top: 20px;
 }
+
+
 
 
 /* Footer section  */
