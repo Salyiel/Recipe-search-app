@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Add event listener to the "Create Profile" button
+    document.getElementById("create-profile-form-container").addEventListener("submit", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Select the form container element
+        var formContainer = document.getElementById("create-profile-form-container");
+        // Change its display property to block to make it visible
+        formContainer.style.display = "block";
+    });
+});
+
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
