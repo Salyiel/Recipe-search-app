@@ -8,17 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Add event listener to the "Create Profile" button
-    document.getElementById("create-profile-form-container").addEventListener("submit", function(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-        // Select the form container element
-        var formContainer = document.getElementById("create-profile-form-container");
-        // Change its display property to block to make it visible
-        formContainer.style.display = "block";
+    document.addEventListener("DOMContentLoaded", function() {
+        // Add event listener to the "Create Profile" button
+        document.getElementById("show-create-profile").addEventListener("click", function(event) {
+            // Prevent the default button behavior
+            event.preventDefault();
+            // Select the form container element
+            var formContainer = document.getElementById("create-profile-form-container");
+            // Change its display property to block to make it visible
+            formContainer.style.display = "block";
+            
+            var loginFormContainer = document.getElementById("login-form-container");
+            loginFormContainer.style.display = "none";
+        });
     });
-});
+
+
 
 
 const searchForm = document.querySelector('#search-form');
