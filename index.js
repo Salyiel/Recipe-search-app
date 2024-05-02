@@ -1,25 +1,73 @@
 // Using Express.js for server-side logic
-
 const express = require('express');
-const axios = require('axios');
+const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5500;
+const PORT = process.env.PORT || 5500;
 
-const API_ID = '152eb6ce';
-const API_KEY = '45b14f74322d42c2b4a840c0fbbc6845';
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/recipes', async (req, res) => {
-    const query = req.query.q;
-    
-    try {
-        const response = await axios.get(`https://api.edamam.com/search?q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
-        res.json(response.data);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching recipes' });
+// In-memory storage for users and recipes
+let users = [];
+let recipes = [];
+
+// Routes
+// Register endpoint
+app.post('/register', (req, res) => {
+    const { username, password, email, fullname } = req.body;
+
+    // Check if username already exists
+    if (users.find(user => user.username === username)) {
+        return res.status(400).send('Username already exists');
     }
+
+    // Create new user object
+    const newUser = {
+        username,
+        password,
+        email,
+        fullname,
+        favorites: []
+    };
+
+    // Store new user
+    users.push(newUser);
+    res.status(201).send('User registered successfully');
 });
 
+// Login endpoint
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+
+    // Find user by username and password
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (!user) {
+        return res.status(401).send('Invalid username or password');
+    }
+
+    res.send(user);
+});
+
+// Add favorite recipe endpoint
+app.post('/favorite', (req, res) => {
+    const { username, recipe } = req.body;
+
+    // Find user by username
+    const user = users.find(user => user.username === username);
+
+    if (!user) {
+        return res.status(404).send('User not found');
+    }
+
+    // Add recipe to user's favorites
+    user.favorites.push(recipe);
+    res.status(200).send('Recipe added to favorites');
+});
+
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

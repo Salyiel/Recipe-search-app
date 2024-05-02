@@ -17,14 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
             var formContainer = document.getElementById("create-profile-form-container");
             // Change its display property to block to make it visible
             formContainer.style.display = "block";
-            
+            // Hide the login form display 
             var loginFormContainer = document.getElementById("login-form-container");
             loginFormContainer.style.display = "none";
         });
     });
-
-
-
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
@@ -94,4 +91,6 @@ function displayRecipes(recipes) {
 
     recipesSection.appendChild(row);
 }
+
+
 
