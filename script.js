@@ -21,7 +21,30 @@ document.addEventListener('DOMContentLoaded', () => {
             var loginFormContainer = document.getElementById("login-form-container");
             loginFormContainer.style.display = "none";
         });
+          // Add event listener to the create profile form submission
+    document.getElementById("create-profile-form").addEventListener("submit", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Perform any necessary form validation here
+
+        // Once validation is successful, redirect the user back to the homepage
+        window.location.href = "/index.html"; // Redirect to the homepage
     });
+});
+    
+
+    
+    
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    
+    if (message) {
+        // Display the message to the user
+        alert(message);
+    }
+});
+
 
 const searchForm = document.querySelector('#search-form');
 const searchInput = document.querySelector('#search-input');
@@ -38,6 +61,7 @@ async function searchRecipes() {
     const data = await response.json();
     displayRecipes(data.hits);
 }
+
 function displayRecipes(recipes) {
     recipesSection.innerHTML = ''; // Clear previous search results
     const row = document.createElement('div');
@@ -75,9 +99,36 @@ function displayRecipes(recipes) {
         const addToFavoritesIcon = document.createElement('i');
         addToFavoritesIcon.classList.add('fas', 'fa-heart', 'favorite-icon');
         addToFavoritesIcon.addEventListener('click', () => {
-            // Add functionality to handle adding recipe to favorites
-            // For example, you can use local storage to store favorite recipes
-        });
+        // Get the recipe title and description from the card
+        const recipeTitle = recipe.recipe.label;
+        const recipeDescription = recipe.recipe.ingredientLines.join(', '); // Example: Joining ingredients into a description
+    
+         // Create an object to represent the recipe
+        const recipe = {
+            title: recipeTitle,
+            description: recipeDescription
+            // Add any other properties you want to store
+        };                                      
+    
+        // Check if favorites already exist in local storage
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        
+        // Check if the recipe is already in favorites
+        const existingIndex = favorites.findIndex(fav => fav.title === recipe.title);
+        if (existingIndex === -1) {
+            // Add the recipe to favorites
+            favorites.push(recipe);
+            
+            // Save favorites back to local storage
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            
+            // Optionally, provide feedback to the user
+            alert('Recipe added to favorites!');
+        } else {
+            // Optionally, provide feedback to the user that the recipe is already in favorites
+            alert('Recipe is already in favorites!');
+        }
+    });
 
         cardBody.appendChild(title);
         cardBody.appendChild(image);

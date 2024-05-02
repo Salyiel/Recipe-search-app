@@ -13,6 +13,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let users = [];
 let recipes = [];
 
+
+// HTML form
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+
 // Routes
 // Register endpoint
 app.post('/register', (req, res) => {
@@ -34,7 +41,12 @@ app.post('/register', (req, res) => {
 
     // Store new user
     users.push(newUser);
-    res.status(201).send('User registered successfully');
+    
+    // Redirect back to home page with a message
+    res.redirect('/?message=User registered successfully');
+
+    // Alternatively, you can include any other message you want to display.
+    // res.redirect('/?message=Welcome');
 });
 
 // Login endpoint
