@@ -9,7 +9,6 @@
 //     const userInfoDiv = document.getElementById('user-info');
 //     userInfoDiv.innerHTML = `<p>Welcome, ${fullName} (${username})</p>`;
 // });
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('login-btn');
     const loginSection = document.getElementById('login-section');
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loginBtn.addEventListener('click', () => {
         loginSection.classList.toggle('d-none');
     });
-
     // Event listener for the "Create Profile" button
     const showCreateProfileBtn = document.getElementById("show-create-profile");
     showCreateProfileBtn.addEventListener("click", () => {
