@@ -6,7 +6,46 @@ document.addEventListener('DOMContentLoaded', () => {
     loginBtn.addEventListener('click', () => {
         loginSection.classList.toggle('d-none');
     });
+
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Assuming you have an array of user objects
+        const users = [
+            { username: 'user1', password: 'password1', fullName: 'User One' },
+            { username: 'user2', password: 'password2', fullName: 'User Two' },
+            // Add more user objects as needed
+        ];
+
+        // Check if the entered credentials match any user
+        const user = users.find(user => user.username === username && user.password === password);
+
+        if (user) {
+            // Authentication successful, redirect to homepage with user info
+            window.location.href = `/index.html?username=${user.username}&fullName=${user.fullName}`;
+        } else {
+            // Authentication failed, display error message or handle it as needed
+            alert('Invalid username or password');
+        }
+    });
 });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Extract username and full name from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const fullName = urlParams.get('fullName');
+
+        // Display user information on the page
+        const userInfoDiv = document.getElementById('user-info');
+        userInfoDiv.innerHTML = `<p>Welcome, ${fullName} (${username})</p>`;
+    });
+
 
     document.addEventListener("DOMContentLoaded", function() {
         // Add event listener to the "Create Profile" button

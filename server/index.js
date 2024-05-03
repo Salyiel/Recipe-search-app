@@ -1,24 +1,20 @@
-// Using Express.js for server-side logic
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5501;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, 'recipe')));
+
 // In-memory storage for users and recipes
 let users = [];
 let recipes = [];
-
-
-// HTML form
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
 
 // Routes
 // Register endpoint

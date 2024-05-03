@@ -55,6 +55,8 @@ body {
 
 .carousel-item img {
     border-radius: 15px;
+    max-width: 200px;
+    height: auto;
 }
 
 /* Login section styling */
