@@ -44,6 +44,20 @@ app.post('/register', (req, res) => {
 });
 
 // Login endpoint
+// New login endpoint using app.get
+app.get('/login', (req, res) => {
+    const { username, password } = req.query; // Assuming username and password are sent as query parameters
+
+    // Find user by username and password
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (!user) {
+        return res.status(401).send('Invalid username or password');
+    }
+
+    res.send(user);
+});
+
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
 

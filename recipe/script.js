@@ -161,5 +161,26 @@ function displayRecipes(recipes) {
     recipesSection.appendChild(row);
 }
 
+    // Function to show favorite recipes section
+    function showFavoritesSection() {
+        const favoritesSection = document.getElementById('favorites-section');
+        favoritesSection.style.display = 'block';
+        // Hide other sections if needed
+    }
 
+    // Event listener for displaying favorite recipes
+    const favoritesBtn = document.getElementById('favorite-icon');
+    favoritesBtn.addEventListener('click', showFavoritesSection);
+
+    // Function to update the favorites section with favorite recipes
+    function updateFavoritesSection() {
+        const favoritesSection = document.getElementById('favorites-section');
+        favoritesSection.innerHTML = ''; // Clear previous favorites displayed on the page
+
+        favorites.forEach((recipe) => {
+            const favoriteItem = document.createElement('div');
+            favoriteItem.textContent = recipe.title;
+            favoritesSection.appendChild(favoriteItem);
+        });
+    }
 
