@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 5501;
+const PORT = process.env.PORT || 5502;
 
 // Middleware
 app.use(bodyParser.json());
@@ -40,8 +40,6 @@ app.post('/register', (req, res) => {
     
     // Redirect back to home page with a message
     res.redirect('/?message=User registered successfully');
-
-    // Alternatively, you can include any other message you want to display.
     // res.redirect('/?message=Welcome');
 });
 

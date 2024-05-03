@@ -175,6 +175,30 @@ body {
     margin-top: 10px;
 }
 
+.recipe-card {
+    width: 300px; /* Adjust the width of each recipe card */
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px; /* Space between recipe cards */
+    margin-right: 20px; /* Space between recipe cards horizontally */
+}
+
+.row {
+    margin-right: -20px; /* Compensate for the right margin of the last card in each row */
+}
+
+/* Clearfix for the row */
+.row::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.favorited {
+    color: red; /* Change the color to your preferred color */
+}
+
+
 
 /* About Section */
 #about {

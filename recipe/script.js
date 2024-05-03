@@ -1,10 +1,32 @@
 // Vanilla JavaScript for DOM manipulation
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Extract username and full name from the query parameters
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const username = urlParams.get('username');
+//     const fullName = urlParams.get('fullName');
+
+//     // Display user information on the page
+//     const userInfoDiv = document.getElementById('user-info');
+//     userInfoDiv.innerHTML = `<p>Welcome, ${fullName} (${username})</p>`;
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('login-btn');
     const loginSection = document.getElementById('login-section');
 
     loginBtn.addEventListener('click', () => {
         loginSection.classList.toggle('d-none');
+    });
+
+    // Event listener for the "Create Profile" button
+    const showCreateProfileBtn = document.getElementById("show-create-profile");
+    showCreateProfileBtn.addEventListener("click", () => {
+        const loginFormContainer = document.getElementById("login-form-container");
+        const createProfileFormContainer = document.getElementById("create-profile-form-container");
+
+        // Hide the login form container and display the create profile form container
+        loginFormContainer.style.display = "none";
+        createProfileFormContainer.style.display = "block";
     });
 
     const loginForm = document.getElementById('login-form');
@@ -15,14 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Assuming you have an array of user objects
         const users = [
             { username: 'user1', password: 'password1', fullName: 'User One' },
             { username: 'user2', password: 'password2', fullName: 'User Two' },
             // Add more user objects as needed
         ];
 
-        // Check if the entered credentials match any user
         const user = users.find(user => user.username === username && user.password === password);
 
         if (user) {
@@ -33,44 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Invalid username or password');
         }
     });
-});
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Extract username and full name from the query parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get('username');
-        const fullName = urlParams.get('fullName');
+    const createProfileForm = document.getElementById('create-profile-form');
 
-        // Display user information on the page
-        const userInfoDiv = document.getElementById('user-info');
-        userInfoDiv.innerHTML = `<p>Welcome, ${fullName} (${username})</p>`;
-    });
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Add event listener to the "Create Profile" button
-        document.getElementById("show-create-profile").addEventListener("click", function(event) {
-            // Prevent the default button behavior
-            event.preventDefault();
-            // Select the form container element
-            var formContainer = document.getElementById("create-profile-form-container");
-            // Change its display property to block to make it visible
-            formContainer.style.display = "block";
-            // Hide the login form display 
-            var loginFormContainer = document.getElementById("login-form-container");
-            loginFormContainer.style.display = "none";
-        });
-          // Add event listener to the create profile form submission
-    document.getElementById("create-profile-form").addEventListener("submit", function(event) {
-        // Prevent the default form submission behavior
+    createProfileForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        // Perform any necessary form validation here
-
-        // Once validation is successful, redirect the user back to the homepage
-        window.location.href = "/index.html"; // Redirect to the homepage
+        
+        const usernameInput = document.getElementById('new-username');
+        const passwordInput = document.getElementById('new-password');
+        const emailInput = document.getElementById('email');
+        const fullnameInput = document.getElementById('fullname');
+    
+        if (!usernameInput.value || !passwordInput.value || !emailInput.value || !fullnameInput.value) {
+            alert("Please fill in all fields");
+        } else {
+            // Redirect to the homepage after successful form submission
+            window.location.href = "/index.html";
+        }
     });
 });
-    
 
     
     
@@ -129,6 +130,9 @@ function displayRecipes(recipes) {
         ingredients.classList.add('card-text');
         ingredients.textContent = recipe.recipe.ingredientLines.join(', ');
 
+        const buttonGroup = document.createElement('div');
+        buttonGroup.classList.add('d-flex', 'justify-content-between'); // Create a flex container for buttons
+
         const viewRecipeBtn = document.createElement('a');
         viewRecipeBtn.classList.add('btn', 'btn-primary', 'view-recipe');
         viewRecipeBtn.setAttribute('href', recipe.recipe.url);
@@ -138,42 +142,17 @@ function displayRecipes(recipes) {
         const addToFavoritesIcon = document.createElement('i');
         addToFavoritesIcon.classList.add('fas', 'fa-heart', 'favorite-icon');
         addToFavoritesIcon.addEventListener('click', () => {
-        // Get the recipe title and description from the card
-        const recipeTitle = recipe.recipe.label;
-        const recipeDescription = recipe.recipe.ingredientLines.join(', '); // Example: Joining ingredients into a description
-    
-         // Create an object to represent the recipe
-        const recipe = {
-            title: recipeTitle,
-            description: recipeDescription
-            // Add any other properties you want to store
-        };                                      
-    
-        // Check if favorites already exist in local storage
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        
-        // Check if the recipe is already in favorites
-        const existingIndex = favorites.findIndex(fav => fav.title === recipe.title);
-        if (existingIndex === -1) {
-            // Add the recipe to favorites
-            favorites.push(recipe);
-            
-            // Save favorites back to local storage
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            
-            // Optionally, provide feedback to the user
-            alert('Recipe added to favorites!');
-        } else {
-            // Optionally, provide feedback to the user that the recipe is already in favorites
-            alert('Recipe is already in favorites!');
-        }
-    });
+            addToFavoritesIcon.classList.toggle('favorited'); // Toggle the 'favorited' class on click
+            addToFavorites(recipe); // Add the recipe to favorites
+        });
+
+        buttonGroup.appendChild(viewRecipeBtn);
+        buttonGroup.appendChild(addToFavoritesIcon);
 
         cardBody.appendChild(title);
         cardBody.appendChild(image);
         cardBody.appendChild(ingredients);
-        cardBody.appendChild(viewRecipeBtn);
-        cardBody.appendChild(addToFavoritesIcon);
+        cardBody.appendChild(buttonGroup); // Append the button group instead of individual buttons
         card.appendChild(cardBody);
         recipeCard.appendChild(card);
         row.appendChild(recipeCard);
