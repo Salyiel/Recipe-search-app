@@ -111,6 +111,12 @@ function displayRecipes(recipes) {
 
         const card = document.createElement('div');
         card.classList.add('card');
+        card.addEventListener('mouseover', () => {
+            card.style.backgroundColor = 'red'; // Change background color on hover
+        });
+        card.addEventListener('mouseout', () => {
+            card.style.backgroundColor = ''; // Reset background color on mouseout
+        });
 
         const cardBody = document.createElement('div');
         cardBody.classList.add('card-body');
@@ -126,7 +132,8 @@ function displayRecipes(recipes) {
 
         const ingredients = document.createElement('p');
         ingredients.classList.add('card-text');
-        ingredients.textContent = recipe.recipe.ingredientLines.join(', ');
+        const truncatedIngredients = recipe.recipe.ingredientLines.slice(0, 5); // Truncate to only 5 ingredients
+        ingredients.textContent = truncatedIngredients.join(', ');
 
         const buttonGroup = document.createElement('div');
         buttonGroup.classList.add('d-flex', 'justify-content-between'); // Create a flex container for buttons
@@ -158,6 +165,7 @@ function displayRecipes(recipes) {
 
     recipesSection.appendChild(row);
 }
+
 
 function addToFavorites(recipe) {
     // Add the recipe to favorites
