@@ -219,13 +219,8 @@ body {
     margin-right: -20px; /* Compensate for the right margin of the last card in each row */
 }
 
-.card {
-    border: 1px solid transparent; /* Add initial border */
-    transition: border-color 0.3s ease; /* Add transition for smooth effect */
-}
-
 .card:hover {
-    border-color: lightpink; /* Change border color on hover */
+    background-color: lightpink; /* Change background color on hover */
 }
 
 /* Clearfix for the row */
