@@ -159,26 +159,43 @@ function displayRecipes(recipes) {
     recipesSection.appendChild(row);
 }
 
-    // Function to show favorite recipes section
-    function showFavoritesSection() {
-        const favoritesSection = document.getElementById('favorites-section');
-        favoritesSection.style.display = 'block';
-        // Hide other sections if needed
+function addToFavorites(recipe) {
+    // Add the recipe to favorites
+    favorites.push(recipe);
+    
+    // Update the favorites section on the page
+    updateFavoritesSection();
+    
+    // Save favorites to local storage
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+function updateFavoritesSection() {
+    // Clear previous favorites displayed on the page
+    favoritesSection.innerHTML = '';
+    
+    // Iterate through favorites and display them on the page
+    favorites.forEach((recipe) => {
+        const favoriteItem = document.createElement('div');
+        favoriteItem.textContent = recipe.title;
+        favoritesSection.appendChild(favoriteItem);
+    });
+}
+    // Function to show/hide the scroll-to-top button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scroll-to-top").style.display = "block";
+        } else {
+            document.getElementById("scroll-to-top").style.display = "none";
+        }
     }
 
-    // Event listener for displaying favorite recipes
-    const favoritesBtn = document.getElementById('favorite-icon');
-    favoritesBtn.addEventListener('click', showFavoritesSection);
+    // Function to scroll to the top of the page
+    document.getElementById("scroll-to-top").onclick = function () { topFunction() };
 
-    // Function to update the favorites section with favorite recipes
-    function updateFavoritesSection() {
-        const favoritesSection = document.getElementById('favorites-section');
-        favoritesSection.innerHTML = ''; // Clear previous favorites displayed on the page
-
-        favorites.forEach((recipe) => {
-            const favoriteItem = document.createElement('div');
-            favoriteItem.textContent = recipe.title;
-            favoritesSection.appendChild(favoriteItem);
-        });
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
-

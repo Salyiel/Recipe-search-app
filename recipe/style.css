@@ -50,12 +50,12 @@ body {
 /* Image Slider styling */
 #image-slider {
     border: 2px solid #f2f2f2;
-    margin: 200px;
+    margin: 500px;
 }
 
 .carousel-item img {
     border-radius: 15px;
-    max-width: 200px;
+    max-width: auto;
     height: auto;
 }
 
@@ -157,6 +157,10 @@ body {
     height: auto;
 }
 
+.recipe-card:hover{
+    color: lightblue;
+    transform: translateY(-5px);
+}
 
 .card-img-top {
     max-width: 100%;
@@ -181,6 +185,7 @@ body {
     border: 1px solid #ccc;
     margin-bottom: 20px; /* Space between recipe cards */
     margin-right: 20px; /* Space between recipe cards horizontally */
+    transition: transform 0.5s;
 }
 
 .row {
@@ -232,4 +237,14 @@ body {
     padding: 0 25px;
     background: #262626;
     font-weight: 300;
+}
+
+/* Style for scroll-to-top button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    display: none;
+    border-radius: 10px;
 }
