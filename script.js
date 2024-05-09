@@ -112,7 +112,7 @@ function displayRecipes(recipes) {
         const card = document.createElement('div');
         card.classList.add('card');
         card.addEventListener('mouseover', () => {
-            card.style.backgroundColor = 'red'; // Change background color on hover
+            card.style.backgroundColor = 'lightskyblue'; // Change background color on hover
         });
         card.addEventListener('mouseout', () => {
             card.style.backgroundColor = ''; // Reset background color on mouseout
